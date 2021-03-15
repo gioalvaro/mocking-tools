@@ -220,9 +220,9 @@ export default {
   mounted() {
     const id = this.id;
     axios
-      .get(`/api/v1/dessert/${id}`)
+      .get(`https://<POSTMAN_URL>.mock.pstmn.io/api/v1/dessert/${id}`)
       .then(res => {
-        this.anotherResponse = res.data.dessert;
+        this.anotherResponse = res.data;
         console.log(res);
       })
       .catch(err => {
@@ -233,9 +233,9 @@ export default {
     initialize() {
       this.loadingTable = true;
       axios
-        .get("/api/v1/desserts")
+        .get("https://<POSTMAN_URL>.mock.pstmn.io/api/v1/desserts")
         .then(res => {
-          this.desserts = res.data.desserts;
+          this.desserts = res.data;
         })
         .catch(err => {
           console.error(err);
@@ -246,9 +246,9 @@ export default {
     getDessert() {
       const id = this.id;
       axios
-        .get(`/api/v1/dessert/${id}`)
+        .get(`https://<POSTMAN_URL>.mock.pstmn.io/api/v1/dessert/${id}`)
         .then(res => {
-          this.anotherResponse = res.data.dessert;
+          this.anotherResponse = res.data;
         })
         .catch(err => {
           console.error(err);
@@ -297,6 +297,10 @@ export default {
         Object.assign(this.desserts[this.editedIndex], this.editedItem);
       } else {
         this.desserts.push(this.editedItem);
+        axios.post(
+          "https://<POSTMAN_URL>.mock.pstmn.io/api/v1/dessert",
+          this.editedItem
+        );
       }
       this.close();
     }
