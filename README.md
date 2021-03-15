@@ -1,4 +1,4 @@
-# vue-mirage
+# vue-mocking-tools
 
 ## Project setup
 ```
